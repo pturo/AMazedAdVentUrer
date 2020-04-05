@@ -8,10 +8,14 @@ public class CrystalPicker : MonoBehaviour
 {
     public Text countText;
     public GameObject particles;
+    public GameObject winPanel;
+    public Text lvlName;
 
     void Start()
     {
         SetCountText();
+	    Scene lvlN = SceneManager.GetActiveScene();
+	    lvlName.text = "Poziom: " + lvlN.name; 
     }
 
     void OnTriggerEnter(Collider other)
@@ -31,7 +35,8 @@ public class CrystalPicker : MonoBehaviour
         countText.text = "Kryształów: " + crystals.Length;
         if (crystals.Length == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            winPanel.SetActive(true);
+	    Time.timeScale = 0f;
             Cursor.visible = true;
         }
     }

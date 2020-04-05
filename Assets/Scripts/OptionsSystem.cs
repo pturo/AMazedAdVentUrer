@@ -48,6 +48,11 @@ public class OptionsSystem : MonoBehaviour
         GameIsPaused = false;
     }
 
+    public void NextLevel()
+    {
+	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
@@ -56,5 +61,11 @@ public class OptionsSystem : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void StartGame()
+    {
+	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	Time.timeScale = 1;
     }
 }
